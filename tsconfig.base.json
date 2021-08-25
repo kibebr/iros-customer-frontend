@@ -13,8 +13,13 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mobile/domain/*": ["libs/domain/src/lib/*"],
+      "@mobile/shared": ["libs/shared/src/index.ts"],
+      "@app/*": ["apps/mobilex/src/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

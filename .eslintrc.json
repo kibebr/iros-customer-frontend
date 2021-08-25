@@ -1,0 +1,68 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nrwl/nx"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.base.json"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "off",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "standard-with-typescript"
+      ],
+      "rules": {
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/promise-function-async": "off",
+        "@typescript-eslint/ban-types": "off"
+     }
+    },
+    {
+      "files": ["*.tsx"],
+      "extends": [
+        "plugin:@nrwl/nx/react", 
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
+      ],
+      "plugins": [
+        "react"
+      ],
+      "rules": {
+        "react-hooks/exhaustive-deps": "off",
+        "react/prop-types": "off",
+        "react/display-name": "off",
+        "react/no-unescaped-entities": "off"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    }
+  ]
+}
